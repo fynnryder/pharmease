@@ -1,0 +1,22 @@
+
+<div class="container">
+<table>
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Request From</th>
+              <th>Registration No</th>
+              <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-repeat="req in requests">
+            <td>{{req.name}}</td>
+            <td>{{req.type}}</td>
+            <td>{{req.lic}}</td>
+            <td><a href="javascript:void(0);" ng-click="approveRequest(req)">Approve</a></td>
+          </tr>
+        </tbody>
+      </table>
+ </div>

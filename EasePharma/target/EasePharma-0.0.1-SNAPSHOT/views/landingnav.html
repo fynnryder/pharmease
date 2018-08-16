@@ -1,0 +1,105 @@
+
+<div class="navbar-fixed">
+	<nav style="background-color: black;">
+		<div class="nav-wrapper">
+			<a href="#!" class="brand-logo"><i class="material-icons">book</i>EasePharma</a>
+
+			<ul class="right hide-on-med-and-down">
+				<li><a href="javascript:void(0)"
+					ng-click="navigateToDashBoard()">Login</a></li>
+				<li><a href="javascript:void(0)" ng-click="navigateToLogs()">Register</a></li>
+
+			</ul>
+		</div>
+	</nav>
+</div>
+
+<div id="modal1" class="modal" ng-style="modalStyle" style="margin-top:5% !important" ng-controller="login-controller">
+	<div class="modal-content">
+		<h5>{{loginStatus}}</h5>
+		<form class="my-form" ng-submit="loginUser($event);"
+			autocomplete="off">
+			<div class="card">
+				<div class="card-content">
+					<div class="input-field">
+						<input id="user_id" name="user_id" type="text" ng-model="userName"
+							required="required" class="validate" autocomplete="false" /> <label
+							for="user_id">User Id</label>
+					</div>
+					<div class="input-field">
+						<input id="password" name="password" type="password"
+							ng-model="password" required="required" class="validate"
+							autocomplete="false" /> <label for="password">Password</label>
+					</div>
+					 <button type="submit" class="btn" value="login" style="background-color: #62bf6e;display:none">Login</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer" style="border-top: 1px solid rgba(0,0,0,0.1);">
+		<a href="javascript:void(0)" class=" left modal-action  waves-effect waves-green btn-flat" ng-click=loginUser($event);>Login</a>
+		<a href="javascript:void(0)" class=" right modal-action  waves-effect waves-green btn-flat" ng-click=loginUser($event);>Forgot Password?</a>
+	</div>
+</div>
+
+<div id="modal2" class="modal modal-fixed-footer" style="height:100%;max-height:90% !important;" ng-style="modalStyle" ng-controller="register-controller">
+<div class="modal-content">
+	<div><h5>{{loginStatus}}</h5></div>
+
+	<div class="card">
+			<select style="display: block;" ng-model="userObject.userType">
+				<option value="doc">Doctor</option>
+				<option value="user">Patient</option>
+				<option value="pharm">Pharm</option>
+			  </select>
+	</div>
+           <form class="form-register" method="post" name="register" novalidate ng-submit="validateAndSubmitForm()">
+           <div class="card">
+           <!-- 	<nav style="background-color: #62bf6e;font-size: 1.4em"><span style="margin-left: 30px;margin-top: 5%;">{{loginStatus}}</span><span ng-show="loginStatus === 'Authenticating..'" class="saving" style="position:relative; 15px;bottom: 4px"><i>&nbsp;</i></span></nav> -->
+           <div class="card-content">
+				<div class="input-field lic" ng-if="userType == 'doc'">
+						<input id="license" type="text" class="validate" ng-model="userObject.userPrimaryId" required>
+							<label for="license">License No</label>
+				</div>
+				<div class="input-field phone" ng-if="userType == 'user'">
+						<input id="license" type="text" class="validate" ng-model="userObject.userPrimaryId" required>
+							<label for="license">Phone Number</label>
+				</div>
+				<div class="input-field reg" ng-if="userType == 'pharm'">
+						<input id="license" type="text" class="validate" ng-model="userObject.userPrimaryId" required>
+							<label for="license">Registration Number</label>
+				</div>
+	            <div class="input-field name">
+            	  <input id="first-name" type="text" class="validate" ng-model="userObject.firstName" required>
+              		<label for="first-name">First Name</label>
+            	</div>
+            <div class="input-field sname">
+              <input id="last-name" type="text" class="validate" ng-model="userObject.address"  required>
+              <label for="last-name">Address</label>
+             </div>
+             <div class="input-field email">
+              <input id="email" type="email" name="email" ng-model="userObject.email" class="validate" required>
+              <label for="email">Email</label>
+             </div>
+             <p class="alert alert-danger" ng-show="form-register.email.$error.email">Your email is invalid.</p>
+             <div class="input-field pass" >
+               <input id="password" type="password" name="password" ng-model="userObject.password" ng-minlength='6' class="validate" required>
+               <label for="password">Password</label>
+              </div>
+              <div class="input-field repass">
+               <input id="password" type="password" name="re-password" ng-model="userObject.confirmPassword" ng-minlength='6' class="validate" required>
+               <label for="password">Confirm Password</label>
+              </div>
+              <p class="alert alert-danger" ng-show="form-register.password.$error.minlength || form.password.$invalid">Your password must be at least 6 characters.</p>
+              <div class="space-top text-center">
+               <input type="submit" class="waves-effect  btn done" style="background-color: #62bf6e; display:none"/>
+
+               </a>
+              </div>
+              </div></div>
+             </form>
+             </div>
+             <div class="modal-footer sep">
+		<a href="javascript:void(0)" class=" left modal-action  waves-effect waves-green btn-flat" ng-click=validateAndSubmitForm();>Create Account</a>
+	</div>
+             </div>

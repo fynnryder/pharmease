@@ -1,0 +1,50 @@
+<div class="container center">
+
+<div ng-repeat="users in patients">
+<div style="width: 50% ; margin-left: 25%;">
+
+	<div class="col s12 m7 l3 center">
+		<div class="card horizontal">
+			<div class="card-image">
+				
+			</div>
+			<div class="card-stacked">
+				<div class="card-content">
+					<div><b>{{users.name}}</b></div>
+					<div><b>{{users.phone}}</b></div>
+					<div><b>{{users.address}}</b></div>
+				</div>
+				<div class="card-action">
+					<a href="javascript:void(0)" ng-click="viewPrescription(users)">View Prescription</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+  <!-- Modal Structure -->
+  <div id="modal123" class="modal">
+    <div class="modal-content">
+      <h4>{{header}}</h4>
+      <p>{{message}}</p>
+    </div>
+    <div class="modal-footer">
+	  <a ng-if="showAgree" href="javascript:void(0)" ng-click="getPermission()" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+	  <a ng-if="showAgree" href="javascript:void(0)" ng-click="close()" class="modal-action modal-close waves-effect waves-green btn-flat">Disagree</a>
+	  <a ng-if="showWait" href="javascript:void(0)" ng-click="close()" class="modal-action modal-close waves-effect waves-green btn-flat">Lets Wait!</a>
+    </div>
+  </div>
+  
+  
+  <div id="modalpres" class="modal">
+    <div class="modal-content">
+      <h4>User Prescription</h4>
+      <div>
+      	<img src="images/medical-prescription.jpg"/>
+      </div>
+    </div>
+    <div class="modal-footer">
+	  <a  href="javascript:void(0)" ng-click="close()" class="modal-action modal-close waves-effect waves-green btn-flat">Got It!!</a>
+    </div>
+  </div>
